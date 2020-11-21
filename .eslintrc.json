@@ -33,6 +33,7 @@
     "no-unused-expressions": "off",
     "react/jsx-props-no-spreading": "off",
     "@typescript-eslint/camelcase": "off",
+    "no-param-reassign": "off",
     "@typescript-eslint/explicit-function-return-type": [
       "error",
       {
