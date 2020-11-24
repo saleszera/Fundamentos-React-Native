@@ -21,6 +21,8 @@ import {
   TotalProductsContainer,
   TotalProductsText,
   SubtotalValue,
+  EmptyContainer,
+  EmptyText,
 } from './styles';
 
 import { useCart } from '../../hooks/cart';
@@ -72,51 +74,58 @@ const Cart: React.FC = () => {
 
   return (
     <Container>
-      <ProductContainer>
-        <ProductList
-          data={products}
-          keyExtractor={item => item.id}
-          ListFooterComponent={<View />}
-          ListFooterComponentStyle={{
-            height: 80,
-          }}
-          renderItem={({ item }: { item: Product }) => (
-            <Product>
-              <ProductImage source={{ uri: item.image_url }} />
-              <ProductTitleContainer>
-                <ProductTitle>{item.title}</ProductTitle>
-                <ProductPriceContainer>
-                  <ProductSinglePrice>
-                    {formatValue(item.price)}
-                  </ProductSinglePrice>
+      {products.length === 0 ? (
+        <EmptyContainer>
+          <FeatherIcon name="frown" size={100} color="#a0a0b3" />
+          <EmptyText>Não há nenhum produto no carrinho no momento...</EmptyText>
+        </EmptyContainer>
+      ) : (
+        <ProductContainer>
+          <ProductList
+            data={products}
+            keyExtractor={item => item.id}
+            ListFooterComponent={<View />}
+            ListFooterComponentStyle={{
+              height: 80,
+            }}
+            renderItem={({ item }: { item: Product }) => (
+              <Product>
+                <ProductImage source={{ uri: item.image_url }} />
+                <ProductTitleContainer>
+                  <ProductTitle>{item.title}</ProductTitle>
+                  <ProductPriceContainer>
+                    <ProductSinglePrice>
+                      {formatValue(item.price)}
+                    </ProductSinglePrice>
 
-                  <TotalContainer>
-                    <ProductQuantity>{`${item.quantity}x`}</ProductQuantity>
+                    <TotalContainer>
+                      <ProductQuantity>{`${item.quantity}x`}</ProductQuantity>
 
-                    <ProductPrice>
-                      {formatValue(item.price * item.quantity)}
-                    </ProductPrice>
-                  </TotalContainer>
-                </ProductPriceContainer>
-              </ProductTitleContainer>
-              <ActionContainer>
-                <ActionButton
-                  testID={`increment-${item.id}`}
-                  onPress={() => handleIncrement(item.id)}
-                >
-                  <FeatherIcon name="plus" color="#E83F5B" size={16} />
-                </ActionButton>
-                <ActionButton
-                  testID={`decrement-${item.id}`}
-                  onPress={() => handleDecrement(item.id)}
-                >
-                  <FeatherIcon name="minus" color="#E83F5B" size={16} />
-                </ActionButton>
-              </ActionContainer>
-            </Product>
-          )}
-        />
-      </ProductContainer>
+                      <ProductPrice>
+                        {formatValue(item.price * item.quantity)}
+                      </ProductPrice>
+                    </TotalContainer>
+                  </ProductPriceContainer>
+                </ProductTitleContainer>
+                <ActionContainer>
+                  <ActionButton
+                    testID={`increment-${item.id}`}
+                    onPress={() => handleIncrement(item.id)}
+                  >
+                    <FeatherIcon name="plus" color="#E83F5B" size={16} />
+                  </ActionButton>
+                  <ActionButton
+                    testID={`decrement-${item.id}`}
+                    onPress={() => handleDecrement(item.id)}
+                  >
+                    <FeatherIcon name="minus" color="#E83F5B" size={16} />
+                  </ActionButton>
+                </ActionContainer>
+              </Product>
+            )}
+          />
+        </ProductContainer>
+      )}
       <TotalProductsContainer>
         <FeatherIcon name="shopping-cart" color="#fff" size={24} />
         <TotalProductsText>{`${totalItensInCart} itens`}</TotalProductsText>
