@@ -1,7 +1,7 @@
 
 
 <div  align="center">
-<img src="./src/assets/logo.png" alt="GoMarketplace"/>
+<img src="./src/assets/logo@3x.png" alt="GoMarketplace"/>
 </div>
 
 
