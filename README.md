@@ -9,13 +9,13 @@
 
 <a  href="#-sobre-o-projeto">Sobre</a> •
 
-<a  href="#-funcionalidades">Funcionalidades</a> •
+<a  href="#%EF%B8%8F-funcionalidades">Funcionalidades</a> •
 
 <a  href="#-como-executar-o-projeto">Como executar</a> •
 
 <a  href="#-tecnologias">Tecnologias</a> •
 
-<a  href="#-captura-de-tela">Captura de tela</a> •
+<a  href="#%EF%B8%8F-captura-de-tela">Captura de tela</a> •
 
 </p>
 
